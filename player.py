@@ -17,6 +17,7 @@ class Haggy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=(70, self.y))
 
     def update(self, *args):
+        self.rect = self.image.get_rect(center=(70, self.y))
         self.jump()
         self.counter += 1
         if self.counter == 10:
@@ -32,7 +33,7 @@ class Haggy(pygame.sprite.Sprite):
                 neg = 1
                 if self.jumpCount < 0:
                     neg = -1
-                self.y -= self.jumpCount ** 2 * 0.1 * neg
+                self.y -= self.jumpCount ** 2 * 0.3 * neg
                 self.jumpCount -= 1
             else:
                 self.isJump = False

@@ -45,7 +45,7 @@ while 1:
 
         road_chunk[1][0] -= speed
         sc.blit(road_chunk[0], (road_chunk[1][0], road_chunk[1][1]))
-    group_Haggy.update()
     group_Haggy.draw(sc)
+    group_Haggy.update()
     pygame.display.update()
     clock.tick(FPS)
