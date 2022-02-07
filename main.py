@@ -1,4 +1,5 @@
 import pygame
+from player import Haggy
 pygame.init()
 
 W = 600
@@ -19,13 +20,21 @@ road_chunks = [
     [pygame.image.load('sprites/road.png'), [0, H - 100]],
     [pygame.image.load('sprites/road.png'), [2404, H - 100]]
 ]
-y = H // 2
+
+y = 270
 speed = 5
+
+p = Haggy(y)
+group_Haggy = pygame.sprite.Group(p)
 
 while 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                p.isJump = True
+
     sc.fill(WHITE)
     for road_chunk in road_chunks:
         if road_chunk[1][0] <= -2400:
@@ -36,6 +45,7 @@ while 1:
 
         road_chunk[1][0] -= speed
         sc.blit(road_chunk[0], (road_chunk[1][0], road_chunk[1][1]))
-
+    group_Haggy.update()
+    group_Haggy.draw(sc)
     pygame.display.update()
     clock.tick(FPS)
